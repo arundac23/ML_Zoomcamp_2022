@@ -39,3 +39,34 @@ chrun rate : identify the crictical feature that increase the chance of chruning
  Difference between mean of the target variable and mean of categories for a feature. If the difference is large, then that particular feature has more influence on the outcome of the results.
  Risk ratio : It is ration between feature category mean and global mean of target variable.If ratio is greater than 1, then there is high possibility of chruning and vice versa if ratio is less than 1.
  ## Feature Importance: Mutual Information
+In probability theory and information theory, the mutual information (MI) of two random variables is a measure of the mutual dependence between the two variables. More specifically, it quantifies the "amount of information" obtained about one random variable by observing the other random variable. The concept of mutual information is intimately linked to that of entropy of a random variable, a fundamental notion in information theory that quantifies the expected "amount of information" held in a random variable.
+Following comments are used to understand the mutual information
+from sklearn.metrics import mutual_info_score
+mutual_info_score(target variable, cat feature variable) --> Mutual information relationship studied between target y variable and each feature variable.
+Applying all the categories through apply function of python
+df_full_train[categorical].apply(mutual_info_churn_score)
+## Feature importance: Correlation
+correlation is used to understand relationship between target variable and numerical features
+correlation coeeficient  is a measure of linear correlation between two sets of data. It is the ratio between the covariance of two variables and the product of their standard deviations; thus, it is essentially a normalized measurement of the covariance, such that the result always has a value between −1 and 1. As with covariance itself, the measure can only reflect a linear correlation of variables, and ignores many other types of relationships or correlations.
+df[numerical].corrwith(df_full_train.churn).abs()
+## One-hot encoding
+encodeing categorical features using scikit learn
+from sklearn.feature_extraction import DictVectorizer
+dv = DictVectorizer(sparse=False) --> vectorize the feature matrix into dictionary format
+train_dict = df_train[featured].to_dict(orient='records')
+X_train = dv.fit_transform(train_dict) 
+## Training logistic regression with Scikit-Learn
+* Train a model with Scikit-Learn
+* Apply it to the validation dataset
+* Calculate the accuracy
+from sklearn.linear_model import LogisticRegression --> Importing the logistic regression model from scikit learn
+model = LogisticRegression(solver='lbfgs') --> define the model with required paramaters
+model.fit(X_train, y_train) --> fit the model into the training datasets.
+y_pred = model.predict_proba(X_val)[:, 1] --> predicting the model in the validation datasets
+df_pred['correct'] = df_pred.prediction == df_pred.actual
+df_pred.correct.mean()
+Predict the accuracy of the model by taking mean of difference between y-actual to y-pred.
+## Model interpretation
+Interpretion of coefficients by smaller model with fewer features.
+## Using the model
+Finally combine the training and validation dataset and make prediction on test data.
