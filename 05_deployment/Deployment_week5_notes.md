@@ -1,17 +1,21 @@
 # Deploying Machine Learning Models
 ## Overview
 
-Jupyter Notebook is useful for prototyping and developing but it's not meant for production environments, because the notebook may contain things such as plots and prints that are useful for understanding our models but are unnecessary in production.
+Fifth week of Machine learning zoomcamp is about learning the model deployment.In overall, Trained Model need to be saved from the Jupyter notebook into python bin file. Then load it into a web service, for which we will use [Flask API Python library](https://flask.palletsprojects.com/en/2.0.x/). Also, we will use pipenv virtual environment to create a Python environment to manage software dependencies and [Docker](https://www.docker.com/products/docker-desktop) to create a container for handling system dependencies. Finally, we will deploy the container in the cloud with AWS EB.
 
-For production environments, we need to ***extract*** the model in a way that can be used by other components such as ***web services***.
+Using the _Churn_ exercises from weeks 3 and 4, a production environment for our Churn model is created:
 
-Using the _Churn_ exercise from weeks 2 and 3, a production environment for our Churn model could be the following:
+![overall_process](https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/course-zoomcamp/05-deployment/images/thumbnail-5-01.jpg)
 
-![Production example](images/05_d01.png)
+## Saving and loading a model
 
-* `model.bin` file, containing the model extracted from the notebook.
-* `Churn service` which exposes the model and allows other components to access it and make predictions.
-* `Marketing service` is used by users who want to make predictions. The users input customer data into the service and the service communicates with Churn to request a prediction. Once the prediction is received, the service can execute whichever task is deemed appropiate, suchn as sending emails with offers to potentially churning customers.
+We used [Pickle library](https://docs.python.org/3/library/pickle.html) to save and load a machine learning model. In general, pickle allows us to save Python model.bin file. All the necessary libraries need to loaded before importing the model again.
+* `model.bin` --> The model that extracted from jupyter notebook.
+* `open(input_file, 'rb')` - open a binary file with the name assigned as input_file , which has read permissiono only , which can be for writing ('w')  Writing permission is used for creating files and reading is applied for loading files. A binary file contains bits instead of text.
+* `x.close()` - close the x file. It is important to guarantee that the file contains the object saved with pickle.
+* `with open(input_file, 'rb'):` - same as `open(input_file, 'rb')`, but in this case you guarantee that this file will be closed.
+* `pickle.load(x)` - Pickle function to load a python object x.
+* `pickle.dump((dv, model), f_out)` -Pickle dump function to save a python object file.
 
 ## Extracting the model
 
@@ -19,26 +23,36 @@ Using the _Churn_ exercise from weeks 2 and 3, a production environment for our 
 1. Export the `.pynb` file as a `.py` file. Clean it up by moving the imports to the top and removing unnecessary steps such as plots and unnecessary prints.
 1. Separate the _train_ and _predict_ methods by creating 2 different `.py` files, each containing each method, if needed.
 
+## Web services: Introduction to Flask
+
+A web service is a software system that supports interoperable machine-to-machine interaction over a network. In general, users make requests with some data and get the required prediction response from server.
+
+app = Flask('churn') --> Create a flask app for the churn prediction
+
+Flask has different decorators to handle http requests
+Different methods for retrieving data from a specified URL are defined in this protocol. The following table summarizes the different http methods:
+
+Request 	          Purpose
+ * `GET`	  --> The most common method. A GET message is send, and the server returns data
+ * `POST`	  --> Used to send HTML form data to the server. The data received by the POST method is not cached by the server.
+ * `HEAD`	 -->  Same as GET method, but no response body.
+ * `PUT`	 -->  Replace all current representations of the target resource with uploaded content.
+ * `DELETE`	--> Deletes all current representations of the target resource given by the URL.
+
+In the churn prediction deployment, We used 
+@app.route('/predict', methods=['POST'])
+The method associated with this web service was POST because it was required to send some information about customers, which is not easy to do with GET method. 
+All the requests and responses  in flask must be in JSON files, which are quite similar to Python dictionaries.
+The `gunicorn` library helps us to prepare a model to be launched in production. Note: This gunicorn will work on WSL environment. Waitress need to be used for windows machine.
+
 ## Enforce reproducibility with virtual environments
 
-Tools like `pipenv` and `poetry` are useful to create virtual environments on which to develop and test the application. They also allow to specify which versions should be used for each library in order to reproduce the same results.
-
-`conda` can also be used, although it's slightly more cumbersome.
-
-Check the [Python virtual environment management gist](https://gist.github.com/ziritrion/8024025672ea92b8bdeb320d6015aa0d) for a pipenv cheatsheet.
-
-## Expose the model with a function and a web framework
-
-Frameworks like `flask` are useful to expose methods like `predict()` in the form of web services which can be accessed with programatic requests.
-
-Check the [Python reference gist](https://gist.github.com/ziritrion/9b80e47956adc0f20ecce209d494cd0a) for a Flask cheatsheet.
+`pipenv` is used to create virtual environments on which model is developed,tested and deployed that application.This is helpful to manage software level dependencies. It allows to install specific versions that used for each software library in order to reproduce the consistent results.
 
 ## Deploy the model with containers
 
-Using containers (a form of light virtualization) with tools such as `docker` allows for reproducible deployments. Python virtual environments are unnecessary in containers, but `pipenv` can easily install any dependencies on a system level in order to easily deploy from a test virtualenv to a container.
-
-Check the [VM and containers gist](https://gist.github.com/ziritrion/1842c8a4c4851602a8733bba19ab6050) for a Docker cheatsheet.
+Container is next level of isolation from virtual environment level separation. It is helpful to manage the system level dependencies. Docker container is used for deploying this churn model. All the necessary softwares, webservices, virtual environment can be installed inside the docker container without affecting the external system.
 
 ## Push the container to the cloud
 
-Tools such as Amazon Web Services Elastic Beanstalk offer easy ways to push a container and deploy it to a production environment.
+Finally clould services like Amazon Web Services Elastic Beanstalk or GCP are used to deploy it to a production environment by pushing from a docker container 
