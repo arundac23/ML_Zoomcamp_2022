@@ -17,12 +17,6 @@ We used [Pickle library](https://docs.python.org/3/library/pickle.html) to save 
 * `pickle.load(x)` - Pickle function to load a python object x.
 * `pickle.dump((dv, model), f_out)` -Pickle dump function to save a python object file.
 
-## Extracting the model
-
-1. Save whichever variables you may need (such as the model or the one-hot encoding vectorizer) as files with `pickle`. Include the ability to save to files and open files in your code.
-1. Export the `.pynb` file as a `.py` file. Clean it up by moving the imports to the top and removing unnecessary steps such as plots and unnecessary prints.
-1. Separate the _train_ and _predict_ methods by creating 2 different `.py` files, each containing each method, if needed.
-
 ## Web services: Introduction to Flask
 
 A web service is a software system that supports interoperable machine-to-machine interaction over a network. In general, users make requests with some data and get the required prediction response from server.
@@ -45,9 +39,9 @@ The method associated with this web service was POST because it was required to 
 All the requests and responses  in flask must be in JSON files, which are quite similar to Python dictionaries.
 The `gunicorn` library helps us to prepare a model to be launched in production. Note: This gunicorn will work on WSL environment. Waitress need to be used for windows machine.
 
-## Enforce reproducibility with virtual environments
+## Creating python virtual environments
 
-`pipenv` is used to create virtual environments on which model is developed,tested and deployed that application.This is helpful to manage software level dependencies. It allows to install specific versions that used for each software library in order to reproduce the consistent results.
+`pipenv` is used to create virtual environments on which model is developed,tested and deployed that application.This is helpful to manage software level dependencies. It allows to install specific versions of software libraries in order to reproduce the consistent results.
 
 ## Deploy the model with containers
 
