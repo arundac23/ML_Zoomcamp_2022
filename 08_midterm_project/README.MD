@@ -115,6 +115,64 @@ python: --> required softwares list to execute the project.
  ##### `bentoml build`
  
  successful build will show the bentoml logo and model tag information.
+ 
+ After the build, go to this following directory
+ Single deployble directory that includes bentoml model, software dependency and requirements information, docker file, service file
+
+ ##### `cd /bentoml/bentos/heart_failure_classifier/ox7di6s7bsnaajna` 
+ 
+ type `tree` to see the tree view of all the files. use `sudo apt install tree` if tree is not installed in your system
+ 
+ ![image](https://user-images.githubusercontent.com/76126029/201131869-b23b2176-71f7-46c9-9d67-f7ec6d94a260.png)
+
+if you notice, bentoml build automatically create a docker file for us along model,service and software requirements files. 
+
+Now we are ready to containerize and create a docker image for our model.Execute following code for docker image creation.
+
+Please make sure docker is installed and running in your system before this process
+
+##### `bentoml containerize heart_failure_classifier:ox7di6s7bsnaajna ` --> heart_failure_classifier:ox7di6s7bsnaajna is tag of last deployable bentoml build.
+
+This will create a docker image. 
+
+Run this following command with docker and make the predictions using swagger UI. 
+
+##### `docker run -it --rm -p 3000:3000 heart_failure_classifier:ox7di6s7bsnaajna`
+
+ You can open swagger UI using this url 127.0.0.1:3000 or http://localhost:3000.
+ Your swagger UI should be like this
+ ![image](https://user-images.githubusercontent.com/76126029/201137542-ba8ba1a2-cfe8-4521-9a83-c424a4745af8.png)
+ 
+ #### Under ServiceAPIs --> Click `POST` down arrow at right corner
+ ![image](https://user-images.githubusercontent.com/76126029/201138300-923e4d18-911a-4d76-98c0-b95511ebe272.png)
+ 
+ ##### then click, `Try it out` at top right corner
+ ![image](https://user-images.githubusercontent.com/76126029/201139201-e0a1f481-93a8-4a29-b7d5-1cf14029d9f5.png)
+ 
+ Copy and paste the below code in the Request body and click execute:
+ `{
+  "age": 41,
+  "sex": "M",
+  "chest_pain_type": "ASY",
+  "resting_bp_s": 110,
+  "cholesterol": 289,
+  "fasting_blood_sugar": "0",
+  "resting_ecg": "Normal",
+  "max_heart_rate": 170,
+  "exercise_angina": "No",
+  "oldpeak": 0.0,
+  "st_slope": "Flat"
+}`
+![image](https://user-images.githubusercontent.com/76126029/201139693-625b2c0c-9c3b-477a-a38f-21c26ba80427.png)
+
+you should get successful response as below based on your input.
+
+![image](https://user-images.githubusercontent.com/76126029/201140038-19da4ec1-b503-4f39-bc44-05da7682ab3a.png)
+
+
+
+
+ 
 
 
 
