@@ -136,6 +136,10 @@ Please make sure docker is installed and running in your system before this proc
 
 ##### `bentoml containerize heart_failure_classifier:ox7di6s7bsnaajna ` --> heart_failure_classifier:ox7di6s7bsnaajna is tag of last deployable bentoml build.
 
+you can also use this comment
+
+##### `bentoml containerize heart_failure_classifier:latest `
+
 This will create a docker image. 
 
 I have uploaded this docker image into docker hub. You can download into your own machine to run it without doing the above procedure.
