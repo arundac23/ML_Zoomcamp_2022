@@ -176,6 +176,15 @@ you should get successful response as below based on your input.
 
 ![image](https://user-images.githubusercontent.com/76126029/201140038-19da4ec1-b503-4f39-bc44-05da7682ab3a.png)
 
+## AWS Deployment:
+Model was deployed in AWS. But service was turned off after that. I will attach my images of my AWS deployement.
+Docker image is uploaded to amazon elastic container registry
+![AWS_docker_image_upload](images/Docker_image_in_AWS.jpg)
+
+Custer and tasks created in Amazon containerservice
+![AWS_task_custer_creation](images/tasks.png)
+
+
 
 
 
