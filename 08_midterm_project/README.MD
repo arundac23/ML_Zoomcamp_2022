@@ -3,7 +3,9 @@
 
 `Original data location:` [Heart failure data](https://www.openml.org/search?type=data&status=active&id=43682)
 
-This is a midterm project as part of ML-Zoomcamp 2022 organized by [Alexey grigorev](https://github.com/alexeygrigorev). The original repositary of this course is in this link [mlzoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) #MLZoomcamp
+This is a midterm project as part of ML-Zoomcamp 2022 organized by [Alexey grigorev](https://github.com/alexeygrigorev). The original repositary of this course is in this link [mlzoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) 
+
+### #MLZoomcamp
 
 ## Description about dataset:
 Context Heart Disease Dataset (Most comprehensive) Content Heart disease is also known as Cardiovascular diseases (CVDs) are the number 1 cause of death globally, taking an estimated 17.9 million lives each year which is about 32 of all deaths globally. CVDs are a group of disorders of the heart and blood vessels and include coronary heart disease, cerebrovascular disease, rheumatic heart disease, and other conditions. Four out of 5CVD deaths are due to heart attacks and strokes, and one-third of these deaths occur prematurely in people under 70 years of age. We have curated this dataset by combining different datasets already available independently but not combined before. W have combined them over 11 common features which makes it the largest heart disease dataset available for research purposes. The five datasets used for its curation are: Database: of instances:
@@ -40,14 +42,14 @@ For this midterm project, a binary classification model was trained on the `hear
 
 The exploratory data analysis, Model building , parameter tuning and final model selection was done using Jupyter Notebook --> `notebook.ipynb`.
 
-The model training script was exported as `train.ipynb`.
+The model training script was exported as `train.py`.
 
 # Files
 
 * `README.md`: Project description markdown file.
 * `heart.csv`: the CSV file containing the dataset.
 * `notebook.ipynb`: a Jupyter Notebook for model building and parameter tuning
-* `train.ipynb`: Trained model file to export bentoml model with name tag.
+* `train.py`: Trained model file to export bentoml model with name tag.
 * `service.py`:  File that used to call for the BentoML service.
 * `bentofile.yaml`: file that used to build bentoml to get all the dependencies and creates one single deployable directory for us.
 * `ox7di6s7bsnaajna`: Single deployble directory that includes bentoml model, software dependency and requirements information, docker file, service file
@@ -73,7 +75,7 @@ Trained model is saved as `train.ipynb` file. Inorder to save a bentoml model. o
 
 ##### `jupyter notebook` --> To open a juypter notebook.
 
-Then open and execute `train.ipynb` using the jupyter notebook.
+Then open and execute `train.ipynb` using the jupyter notebook or run `train.py` in python to save the bento model.
 
 ![image](https://user-images.githubusercontent.com/76126029/201117248-f18c30f3-b64e-43dd-8929-04bfd9117029.png)
 This will create a new bentoml model with name tag.
