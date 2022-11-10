@@ -80,26 +80,25 @@ Once the model is saved, use the already created `service.py`file to run the app
 
 ##### `bentoml serve service:svc` -->  service refers to script and svc is the service name.
 
-This will open swagger UI through this port url 127.0.0.1:3000 or 0.0.0.0:3000. You check your prediction here by inputting your feature variable. I will cover the details of it later.
+This will open swagger UI through this port url 127.0.0.1:3000 or 0.0.0.0:3000. You can check your prediction here by inputting your feature variable. I will cover the details of it later.
 
 #### lets click ctrl+c to come out of this service.
 
 Before build the bentoml, we need to create a bentoml.yaml by specifing the following details.
+ 
+`service: "service.py:svc"` --> the service and endpoint to run the app
 
-#### 
-`service: "service.py:svc"`
-
-labels:
+labels: --> Details about the owner and title of the project
 
   `owner: arundac23`
   
   `project: heart-failure-pred`
   
-include:
+include: --> Files that need to be included in that build
 
 `- "*.py"`
 
-python:
+python: --> required softwares list to execute the project.
 
   packages:
   
@@ -110,6 +109,12 @@ python:
     - pandas
     
     - numpy`
+    
+ Now we are ready for build, run this following command from the folder where bentofile.yaml is saved.
+ 
+ ##### `bentoml build`
+ 
+ successful build will show the bentoml logo and model tag information.
 
 
 
