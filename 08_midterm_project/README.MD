@@ -1,7 +1,9 @@
 # Heart Failure Prediction
-`The goal is to predict heart failure rate of the patients based the available features.`
+`The goal is to predict heart failure rate of the patients based the available features.` 
 
 `Original data location:` [Heart failure data](https://www.openml.org/search?type=data&status=active&id=43682)
+
+This is a midterm project as part of ML-Zoomcamp 2022 organized by [Alexey grigorev](https://github.com/alexeygrigorev). The original repositary of this course is in this link [mlzoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp)
 
 ## Description about dataset:
 Context Heart Disease Dataset (Most comprehensive) Content Heart disease is also known as Cardiovascular diseases (CVDs) are the number 1 cause of death globally, taking an estimated 17.9 million lives each year which is about 32 of all deaths globally. CVDs are a group of disorders of the heart and blood vessels and include coronary heart disease, cerebrovascular disease, rheumatic heart disease, and other conditions. Four out of 5CVD deaths are due to heart attacks and strokes, and one-third of these deaths occur prematurely in people under 70 years of age. We have curated this dataset by combining different datasets already available independently but not combined before. W have combined them over 11 common features which makes it the largest heart disease dataset available for research purposes. The five datasets used for its curation are: Database: of instances:
@@ -120,7 +122,7 @@ python: --> required softwares list to execute the project.
  
  Single deployble directory that includes bentoml model, software dependency and requirements information, docker file, service file
 
- ##### `cd /bentoml/bentos/heart_failure_classifier/ox7di6s7bsnaajna` 
+ ##### `cd /bentoml/bentos/heart_failure_classifier/ox7di6s7bsnaajna(your_latest_build)`
  
  type `tree` to see the tree view of all the files. use `sudo apt install tree` if tree is not installed in your system
  
