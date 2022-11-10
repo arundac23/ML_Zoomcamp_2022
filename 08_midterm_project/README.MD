@@ -48,6 +48,7 @@ The model training script was exported as `train.ipynb`.
 * `train.ipynb`: Trained model file to export bentoml model with name tag.
 * `service.py`:  File that used to call for the BentoML service.
 * `bentofile.yaml`: file that used to build bentoml to get all the dependencies and creates one single deployable directory for us.
+* `ox7di6s7bsnaajna`: Single deployble directory that includes bentoml model, software dependency and requirements information, docker file, service file
 
 
 
