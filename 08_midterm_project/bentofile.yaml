@@ -1,6 +1,6 @@
 service: "service.py:svc"
 labels:
-  owner: bentoml-team
+  owner: arundac23
   project: heart-failure-pred
 include:
 - "*.py"
