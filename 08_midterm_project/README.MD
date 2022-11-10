@@ -178,13 +178,19 @@ you should get successful response as below based on your input.
 
 ## AWS Deployment:
 Model was deployed in AWS. But service was turned off after that. I will attach my images of my AWS deployement.
+
 Docker image is uploaded to amazon elastic container registry
 ![AWS_docker_image_upload](images/Docker_image_in_AWS.jpg)
 
-Custer and tasks created in Amazon containerservice
+Custer and tasks created in Amazon container service
 ![AWS_task_custer_creation](images/tasks.png)
 
+Running the task in AWS service
+![AWS_running_task](images/aws_tasks_running.jpg)
 
+Prediction using Final Deployed model in AWS cloud.
+
+![Prediction_using_AWS](images/aws_deployment.jpg)
 
 
 
