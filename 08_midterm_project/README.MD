@@ -117,6 +117,7 @@ python: --> required softwares list to execute the project.
  successful build will show the bentoml logo and model tag information.
  
  After the build, go to this following directory
+ 
  Single deployble directory that includes bentoml model, software dependency and requirements information, docker file, service file
 
  ##### `cd /bentoml/bentos/heart_failure_classifier/ox7di6s7bsnaajna` 
@@ -125,7 +126,7 @@ python: --> required softwares list to execute the project.
  
  ![image](https://user-images.githubusercontent.com/76126029/201131869-b23b2176-71f7-46c9-9d67-f7ec6d94a260.png)
 
-if you notice, bentoml build automatically create a docker file for us along model,service and software requirements files. 
+if you notice, bentoml build automatically create a docker file for us along with model,service and software requirements files. 
 
 Now we are ready to containerize and create a docker image for our model.Execute following code for docker image creation.
 
@@ -139,9 +140,9 @@ I have uploaded this docker image into docker hub. You can download into your ow
 
 Run the following command to download the docker image into your system
 
-##### `docker pull arundac23/heart_failure_classifier:mlzoomcamp2022
+##### `docker pull arundac23/heart_failure_classifier:mlzoomcamp2022`
 
-Run this following command with docker and make the predictions using swagger UI. 
+Run the following command with docker to make the predictions using swagger UI. 
 
 ##### `docker run -it --rm -p 3000:3000 heart_failure_classifier:ox7di6s7bsnaajna`
 
