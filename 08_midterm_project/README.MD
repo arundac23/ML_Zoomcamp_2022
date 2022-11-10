@@ -50,6 +50,66 @@ The model training script was exported as `train.ipynb`.
 * `bentofile.yaml`: file that used to build bentoml to get all the dependencies and creates one single deployable directory for us.
 * `ox7di6s7bsnaajna`: Single deployble directory that includes bentoml model, software dependency and requirements information, docker file, service file
 
+## Model build, containerization and deployment:
+#### Creation of new virtual conda environment:
+`prerequisite: Download and install miniconda`
+you use this following comment for miniconda installation in your WSL.
+##### `curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda_installer.sh`
+##### `bash miniconda_installer.sh`
+
+Go to Ubuntu bash shell or WSl2,And run the following code to create an environment called midtermproj
+
+##### `conda create -n midtermproj jupyter numpy pandas matplotlib seaborn scikit-learn` --> This will create a new env and install all required softwares
+
+##### `conda activate midtermproj` --> to activate the env
+
+##### `pip install bentoml pydantic` --> install bentoml and pydantic only using pip.
+
+#### Training and saving the bentoml model:
+
+Trained model is saved as `train.ipynb` file. Inorder to save a bentoml model. open a jupyter notebook in a same environment
+
+##### `jupyter notebook` --> To open a juypter notebook.
+
+Then open and execute `train.ipynb` using the jupyter notebook.
+
+![image](https://user-images.githubusercontent.com/76126029/201117248-f18c30f3-b64e-43dd-8929-04bfd9117029.png)
+This will create a new bentoml model with name tag.
+
+Once the model is saved, use the already created `service.py`file to run the app using the code
+
+##### `bentoml serve service:svc` -->  service refers to script and svc is the service name.
+
+This will open swagger UI through this port url 127.0.0.1:3000 or 0.0.0.0:3000. You check your prediction here by inputting your feature variable. I will cover the details of it later.
+
+#### lets click ctrl+c to come out of this service.
+
+Before build the bentoml, we need to create a bentoml.yaml by specifing the following details.
+
+#### 
+`service: "service.py:svc"`
+
+labels:
+
+  `owner: arundac23`
+  
+  `project: heart-failure-pred`
+  
+include:
+
+`- "*.py"`
+
+python:
+
+  packages:
+  
+    `- scikit-learn==1.1.1
+    
+    - pydantic
+    
+    - pandas
+    
+    - numpy`
 
 
 
