@@ -1,0 +1,12 @@
+service: "service.py:svc"
+labels:
+  owner: bentoml-team
+  project: heart-failure-pred
+include:
+- "*.py"
+python:
+  packages:
+    - scikit-learn==1.1.1
+    - pydantic
+    - pandas
+    - numpy
