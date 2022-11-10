@@ -135,6 +135,12 @@ Please make sure docker is installed and running in your system before this proc
 
 This will create a docker image. 
 
+I have uploaded this docker image into docker hub. You can download into your own machine to run it without doing the above procedure.
+
+Run the following command to download the docker image into your system
+
+##### `docker pull arundac23/heart_failure_classifier:mlzoomcamp2022
+
 Run this following command with docker and make the predictions using swagger UI. 
 
 ##### `docker run -it --rm -p 3000:3000 heart_failure_classifier:ox7di6s7bsnaajna`
