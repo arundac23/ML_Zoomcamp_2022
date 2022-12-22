@@ -65,7 +65,7 @@ open a another terminal and run the test.py to see the prediction response
 Run `python test.py`
 
 ## Model deployment in AWS Lambda:
-Model deployed in AWS lambda. You check the final prediction using following API
+Model was deployed in AWS lambda. You check the final prediction using following API
 ![image](https://user-images.githubusercontent.com/76126029/209184761-b0a05fe8-263d-42e9-b634-9d8778fad7b6.png)
 
 ![image](https://user-images.githubusercontent.com/76126029/209181059-0c206b1b-a3c5-441f-b7e4-d6f5a2069730.png)
