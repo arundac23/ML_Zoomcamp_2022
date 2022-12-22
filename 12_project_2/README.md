@@ -17,3 +17,8 @@ The Train, val, test and Prediction data is separated in folders. There are arou
 For this capstone project_1, I decided to work on image classification using deep learning cnn architecture.Since I am a complete beginner in deep learning concepts, I took a simple image classification task for this project. Due to time constraint i am not able to explore all other concepts or tools of deep learning during this project. I just followed the same techniques that were taught during the MLzoompcamp deep learning session. Hoping to explore different concepts during the upcoming capstone project_2.
 
 For this project, I didn't train this images from scratch.Since it requires large set of images to improve accuracy. I used transfer learning techinique for image feature extraction.
+
+2 different convolutional architectures were used:
+
+* `Xception`: one of the most popular application available on Keras.
+* `inception_v3`: It is the third edition of Inception CNN model by Google. It is computationally less expensive. It uses auxiliary Classifiers as regularizes.
