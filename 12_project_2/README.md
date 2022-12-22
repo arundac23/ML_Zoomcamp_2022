@@ -65,3 +65,12 @@ open a another terminal and run the test.py to see the prediction response
 Run `python test.py`
 
 ## Model deployment in AWS Lambda:
+Model deployed in AWS lambda. You check the final prediction using following API
+![image](https://user-images.githubusercontent.com/76126029/209184761-b0a05fe8-263d-42e9-b634-9d8778fad7b6.png)
+
+![image](https://user-images.githubusercontent.com/76126029/209181059-0c206b1b-a3c5-441f-b7e4-d6f5a2069730.png)
+Use run `test_aws_lambda.py` in your terminal to see the response for image classification based on your 'url' request.Change the url of other natural scene to see the final prediction.
+![image](https://user-images.githubusercontent.com/76126029/209182988-5c4cc009-868b-4d26-ac5e-f0a28135efac.png)
+
+
+
