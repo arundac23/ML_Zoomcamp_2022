@@ -22,3 +22,23 @@ For this project, I didn't train this images from scratch.Since it requires larg
 
 * `Xception`: one of the most popular application available on Keras.
 * `inception_v3`: It is the third edition of Inception CNN model by Google. It is computationally less expensive. It uses auxiliary Classifiers as regularizes.
+
+## Files:
+
+`README.md`     : Full description about this project.
+
+`Notebook.ipynb`: The jupyter notebook that covers image preparation, model training, hyperparameter tuning, model selection and final model saved in H5 format and    conversion into Tflite format.
+
+train.py: Converted python file from Notebook.ipynb for the training of selected model and saving the final model for deployment.
+
+`model` folder : Xception tflite model(xception_model.tflite) and trained `h5` model of both Xception(xception_v_1_11_0.930.h5) and inceptionv3(inception_v3_1_10_0.927.h5) is saved in this folder.
+
+`conda_env_requirements.txt` : Text file for installing all required dependencies in Conda environment.
+
+`Dockerfile` : The file necessary for the docker image creation.
+
+`lambda_function.py`: python app file for deployed model predictions. This file is required deployment on AWS Lambda serverless service.
+
+`test.py`: The python file test the response from containerized version in Docker.
+
+`test_aws_lambda.py`: The python file test the response from AWS lambda server.
