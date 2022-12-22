@@ -42,3 +42,26 @@ train.py: Converted python file from Notebook.ipynb for the training of selected
 `test.py`: The python file test the response from containerized version in Docker.
 
 `test_aws_lambda.py`: The python file test the response from AWS lambda server.
+
+## Environment setup:
+I have used WSL2 for my model testing and deployment.All the codes were ran and tested through `ubuntu 22.04.1 LTS`.I have used conda for environment setup
+
+Create an environment by using `conda_env_requirements.txt`:
+
+    * `conda create --name <env_name> --file conda_env_requirements.txt` 
+## Building the docker image:
+
+Before creating the Docker image, please make sure that the `Dockerfile`, `xception_model.tflite` and lambda-function.py files are in the folder
+`docker build -f Dockerfile -t landscape-image-classifier .`
+
+Please note the period at the end of the command. You may change `landscape-image-classifier` to any other name.
+
+Once the image has been created, run it with the following command:
+
+`docker run -it --rm -p 8080:8080 landscape-image-classifier:latest`
+
+open a another terminal and run the test.py to see the prediction response
+
+Run `python test.py`
+
+## Model deployment in AWS Lambda:
